@@ -119,6 +119,7 @@ $tablet-break: $tablet-break-num * 1px;
   border: none;
   display: flex;
   text-align: inherit;
+  text-decoration: none; // for anchor tags
 }
 
 @mixin inset-0 {
@@ -136,6 +137,21 @@ $tablet-break: $tablet-break-num * 1px;
 @mixin visible {
   opacity: 1;
   pointer-events: auto;
+}
+
+@mixin lighten($opacity: 0.15) {
+  &:after {
+    content: "";
+    position: absolute;
+    @include inset-0;
+    background: rgba(255, 255, 255, $opacity);
+  }
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 $z-bg: 1;
