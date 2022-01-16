@@ -14,7 +14,7 @@ const Jazz = (props) => {
       <Document.Center>
         <div
           style={{
-            width: "600px",
+            width: "min(600px, 95vw)",
             margin: "32px",
             borderRadius: "8px",
             overflow: "hidden",
