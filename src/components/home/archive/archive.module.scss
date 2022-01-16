@@ -5,6 +5,115 @@
   color: design-system.$gray800-dark;
   display: flex;
   flex-direction: column;
+  padding: 48px #{"min(150px, 8vw)"};
+  box-sizing: border-box;
+
+  .row {
+    margin-bottom: 84px;
+
+    @include design-system.on-tablet {
+      margin-bottom: 56px;
+    }
+  }
+
+  .header {
+    margin-bottom: 8px;
+  }
+
+  .subheader {
+    margin-bottom: 32px;
+  }
+}
+
+.header {
+  @extend .gen-header;
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.subheader {
+  @extend .gen-header;
+  font-size: 16px;
+  color: design-system.$gray600-dark;
+  max-width: 400px;
+  text-align: center;
+  align-self: center;
+}
+
+.row {
+  @include design-system.remove-button-styles;
+  color: design-system.$gray800-dark;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  transition: transform 0.2s;
+  padding: 16px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  $gap: #{"min(142px, 12vw)"};
+
+  .image-container {
+    margin-right: $gap;
+  }
+
+  @include design-system.on-tablet {
+    flex-direction: column;
+
+    .image-container {
+      margin: 0 0 32px;
+      width: 100%;
+    }
+  }
+
+  &:hover {
+    border: solid 1px design-system.$gray200-dark;
+    box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2);
+    transform: scale(1.03);
+  }
+
+  &.rev {
+    @media (min-width: design-system.$tablet-break) {
+      flex-direction: row-reverse;
+      .image-container {
+        margin-right: 0;
+        margin-left: $gap;
+      }
+    }
+  }
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .title {
+    margin-bottom: 8px;
+  }
+
+  .time {
+    margin-bottom: 16px;
+  }
+}
+
+.title {
+  @extend .h-3;
+  font-weight: bold;
+}
+
+.description {
+  @extend .p-2;
+  color: design-system.$gray600-dark;
+}
+
+.image-container {
+  flex-shrink: 0;
+  width: #{"min(40vw, 560px)"};
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.time {
+  color: design-system.$gray500-dark;
 }
