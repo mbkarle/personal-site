@@ -7,6 +7,7 @@
 .content, .basic {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .content {
@@ -68,7 +69,7 @@
 }
 
 .wip {
-  position: fixed;
+  position: absolute;
   padding: 16px;
   top: 64px;
   right: 64px;
