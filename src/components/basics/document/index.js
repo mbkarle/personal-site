@@ -36,7 +36,7 @@ const Document = ({ children, ...props }) => (
   </Layout>
 );
 
-const SUBCOMPONENTS = ["header", "body", "center", "banner"];
+const SUBCOMPONENTS = ["header", "body", "center", "banner", "separator"];
 
 SUBCOMPONENTS.forEach((name) => {
   Document[capitalize(name)] = getBasicComponent(name);

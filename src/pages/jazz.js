@@ -7,6 +7,7 @@ const Jazz = (props) => {
   return (
     <Document {...props}>
       <Document.Header>Jazz, My Pup</Document.Header>
+      <Document.Separator />
       <Document.Body>
         The lucky dog gets a whole page to herself since I featured Tuck on the
         homepage.
@@ -14,8 +15,7 @@ const Jazz = (props) => {
       <Document.Center>
         <div
           style={{
-            width: "min(600px, 95vw)",
-            margin: "32px",
+            width: "min(500px, 95vw)",
             borderRadius: "8px",
             overflow: "hidden",
           }}
