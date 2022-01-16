@@ -1,0 +1,144 @@
+/*----------Define Global Colors----------*/
+$bg: #fdfefe;
+$gray0: #fff;
+$gray25: #f9fbfe;
+$gray50: #f3f7fc;
+$gray75: #eaeff7;
+$gray100: #e1eaf7;
+$gray150: #d3e0f3;
+$gray200: #c9d8ec;
+$gray300: #a7b9d4;
+$gray400: #8295b2;
+$gray500: #5f6f89;
+$gray600: #404d61;
+$gray700: #2a3342;
+$gray800: #1b212c;
+$gray900: #13171f;
+$gray1000: #0f1319;
+$green600: #567fea;
+$green700: #09996e;
+$blue600: #537ce6;
+
+// dark theme colors
+$bg-dark: #1b212c;
+$gray0-dark: #171a1f;
+$gray25-dark: #1f2229;
+$gray50-dark: #272b34;
+$gray75-dark: #2f343e;
+$gray100-dark: #373d49;
+$gray150-dark: #474f5d;
+$gray200-dark: #576171;
+$gray300-dark: #778396;
+$gray400-dark: #96a2b4;
+$gray500-dark: #b3bdcc;
+$gray600-dark: #cdd4de;
+$gray700-dark: #e1e5eb;
+$gray800-dark: #f0f2f5;
+$gray900-dark: #fafafb;
+$gray1000-dark: #fff;
+
+// breakpoints
+// maintain separately as plain number for export convenience
+$mobile-break-num: 600;
+$mobile-break: $mobile-break-num * 1px;
+$tablet-break-num: 1024;
+$tablet-break: $tablet-break-num * 1px;
+@mixin on-tablet {
+  & {
+    @media (max-width: $tablet-break) {
+      @content;
+    }
+  }
+}
+@mixin on-mobile {
+  & {
+    @media (max-width: $mobile-break) {
+      @content;
+    }
+  }
+}
+
+// header styles
+.h-1,
+.h-2,
+.h-3,
+.gen-header {
+  font-family: "Montserrat", Helvetica;
+  letter-spacing: 0.2px;
+}
+
+.h-1 {
+  font-weight: bold;
+  font-size: 72px;
+  line-height: 93px;
+  @include on-mobile {
+    font-size: 56px;
+    line-height: 72px;
+  }
+}
+
+.h-2 {
+  font-size: 30px;
+  line-height: 45px;
+  @include on-mobile {
+    font-size: 26px;
+    line-height: 39px;
+  }
+}
+
+.h-3 {
+  font-size: 24px;
+  line-height: 36px;
+}
+
+// paragraph styles
+.p-1,
+.p-2,
+.p-3 {
+  font-family: Helvetica;
+}
+
+.p-1 {
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.p-2 {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.p-3 {
+  font-size: 15px;
+  line-height: 22px;
+}
+
+@mixin remove-button-styles {
+  padding: 0;
+  background: none;
+  border: none;
+  display: flex;
+  text-align: inherit;
+}
+
+@mixin inset-0 {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+@mixin hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@mixin visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+$z-bg: 1;
+$z-mg: 2;
+$z-fg: 3;
+$z-on-modal: 4;

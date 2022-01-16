@@ -1,0 +1,148 @@
+@use "css/design-system";
+
+.about {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  padding: 3vw 5vw;
+  box-sizing: border-box;
+  flex-direction: row;
+  min-height: 100vh;
+  height: unset;
+}
+
+$max-content-width: 650px;
+
+.slideshow-container {
+  background: white;
+  margin-right: 64px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  border: solid 1px design-system.$gray300;
+  align-items: stretch;
+  transition: height 0.2s;
+  box-shadow: 6px 6px 8px 4px rgba(0, 0, 0, 0.25);
+  max-width: $max-content-width;
+
+  &:hover {
+    .how-to-button {
+      @include design-system.visible;
+    }
+  }
+}
+
+$slide-padding: 16px;
+
+.slide-location {
+  position: relative;
+  padding: $slide-padding; 
+  @extend .gen-header;
+  font-size: 18px;
+  color: design-system.$gray800;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 8px;
+  }
+}
+
+.slide-description {
+  color: design-system.$gray500;
+  overflow-y: auto;
+  height: 68px;
+}
+
+.slide-body {
+  padding: $slide-padding;
+}
+
+.description-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: auto;
+  padding: 16px;
+  box-sizing: border-box;
+  max-width: $max-content-width;
+}
+
+.description-header {
+  @extend .h-1;
+  color: design-system.$gray800-dark;
+  margin-bottom: 16px;
+  background: design-system.$bg-dark;
+  border-radius: 8px;
+  padding: 16px;
+
+  animation: widen 4s ease-out;
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+@keyframes widen {
+  0% { min-width: 0 }
+  100% { min-width: 100% }
+}
+
+.description-p {
+  @extend .p-1;
+  color: design-system.$gray500;
+}
+
+.indicator-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.how-to-button {
+  @include design-system.remove-button-styles;
+  position: absolute;
+  right: $slide-padding;
+  top: $slide-padding;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: solid 1px design-system.$gray200;
+  cursor: pointer;
+  transition: all 0.2s;
+  
+  color: white;
+  background: design-system.$blue600;
+  @include design-system.hidden;
+
+  &:hover {
+    background: rgba(105, 150, 255);
+  }
+}
+
+.origin-cta {
+  @extend .gen-header;
+  font-size: 12px;
+  color: design-system.$gray500;
+  margin-top: 16px;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+}
+
+.origin-button {
+  @include design-system.remove-button-styles;
+  @extend .gen-header;
+  font-size: 12px;
+  background: design-system.$bg-dark;
+  color: design-system.$gray800-dark;
+  padding: 4px 6px;
+  border-radius: 4px;
+  margin-left: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background: design-system.$gray600;
+  }
+}

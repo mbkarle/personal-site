@@ -1,0 +1,68 @@
+@use "css/design-system.scss";
+
+.hero-image {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  height: 100%;
+}
+
+.hero-text-container {
+  position: relative;
+  margin: 48px 0 0 48px;
+  padding: 16px;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+
+  .hero-subheader {
+    margin-top: 16px;
+  }
+}
+
+.hero-header {
+  color: design-system.$gray800;
+  @extend .h-1;
+}
+
+.hero-subheader {
+  @extend .h-2;
+  color: design-system.$gray600;
+}
+
+.scroll-button {
+  @include design-system.remove-button-styles;
+  margin-top: auto;
+  align-self: center;
+  z-index: design-system.$z-mg;
+  cursor: pointer;
+  animation: scroll-prompt 2s ease-in-out infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes scroll-prompt {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.archive {
+  background: design-system.$bg-dark;
+  color: design-system.$gray800-dark;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

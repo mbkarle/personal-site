@@ -1,0 +1,21 @@
+// BIOTIF
+@font-face {
+  font-family: "Biotif";
+  src: url("../fonts/biotif/biotif-regular-webfont.woff2") format("woff2"),
+    url("../fonts/biotif/biotif-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Biotif";
+  src: url("../fonts/biotif/biotif-bold-webfont.woff2") format("woff2"),
+    url("../fonts/biotif/biotif-bold-webfont.woff") format("woff");
+  font-weight: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat.ttf");
+}

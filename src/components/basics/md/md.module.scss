@@ -1,0 +1,14 @@
+.md {
+  white-space: pre-wrap;
+}
+
+.link {
+  text-decoration: underline;
+  text-underline-offset: 1px;
+  cursor: pointer;
+  color: inherit;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
