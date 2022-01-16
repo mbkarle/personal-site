@@ -51,8 +51,14 @@ const Jazz = (props) => {
             </Slideshow.Slide>
           </Slideshow>
         </div>
-        Jazz is a 10 year old beagle + english-shepherd mix and a good girl.
       </Document.Center>
+      <Document.Body>
+        Jazz is a 10 year old beagle + english-shepherd mix and a good girl. I
+        could say so much more - talk about her “my way or home” attitude
+        towards walks, her love of cinema, and her integral role in dish washing
+        processes (haha jk... unless?) - but I’ll let the pictures do most of
+        the talking.
+      </Document.Body>
     </Document>
   );
 };
