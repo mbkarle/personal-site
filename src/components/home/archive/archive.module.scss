@@ -1,0 +1,10 @@
+@use "css/design-system.scss";
+
+.archive {
+  background: design-system.$bg-dark;
+  color: design-system.$gray800-dark;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

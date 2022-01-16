@@ -1,12 +1,12 @@
 import * as styles from "./home.module.scss";
 
 import React from "react";
-import mergeDefaults from "utils/merge-defaults";
 import { StaticImage } from "gatsby-plugin-image";
 import ScrollIcon from "images/scroll-down.icon.svg";
 import useTextPlayback from "hooks/text-playback";
 import SnapScroller from "components/basics/snap-scroller";
 import About from "./about";
+import Archive from "./archive";
 
 const Home = (props) => {
   return (
@@ -56,11 +56,5 @@ const Hero = (props) => {
     </SnapScroller.Panel>
   );
 };
-
-const Archive = (props) => (
-  <SnapScroller.Panel {...mergeDefaults({ className: styles.archive }, props)}>
-    World
-  </SnapScroller.Panel>
-);
 
 export default Home;
