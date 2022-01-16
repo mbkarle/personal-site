@@ -1,15 +1,20 @@
 import * as styles from "./layout.module.scss";
 import "css/typography.scss";
 
-import React from "react";
+import React, { useEffect } from "react";
 import mergeDefaults from "utils/merge-defaults";
-import smoothscroll from "smoothscroll-polyfill";
 
-// activate smooth scroll polyfill
-smoothscroll.polyfill();
-
-const Layout = (props) => (
-  <main {...mergeDefaults({ className: styles.layout }, props)} />
-);
+const Layout = (props) => {
+  useEffect(() => {
+    // delay smoothscroll polyfill until on client to avoid accessing window during SSR
+    if (window) {
+      (async () => {
+        const smoothscroll = await import("smoothscroll-polyfill");
+        smoothscroll.polyfill();
+      })();
+    }
+  }, []);
+  return <main {...mergeDefaults({ className: styles.layout }, props)} />;
+};
 
 export default Layout;
