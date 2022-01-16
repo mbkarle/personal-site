@@ -10,7 +10,11 @@ import Archive from "./archive";
 
 const Home = (props) => {
   return (
-    <SnapScroller {...props}>
+    <SnapScroller
+      {...props}
+      // sadly discontinuing snap scroll for now :(
+      disabled
+    >
       <Hero />
       <About />
       <Archive />

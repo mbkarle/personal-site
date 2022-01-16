@@ -6,12 +6,12 @@ import { isFunction } from "utils/type";
 
 const ScrollContext = createContext({ triggerScroll: () => null });
 
-const SnapScroller = (props) => {
+const SnapScroller = ({ disabled, ...props }) => {
   const [scrollContainer, ref, scroll] = useScrollContainer();
   const triggerScroll = () => {
     if (window?.innerHeight) {
       scroll({
-        top: window.innerHeight,
+        top: window.innerHeight - scrollContainer.scrollTop,
         behavior: "smooth",
       });
     }
@@ -20,7 +20,10 @@ const SnapScroller = (props) => {
   return (
     <ScrollContext.Provider value={{ triggerScroll, scrollContainer }}>
       <div
-        {...mergeDefaults({ className: styles.container }, props)}
+        {...mergeDefaults(
+          { className: styles.container + (disabled ? ` ${styles.off}` : "") },
+          props
+        )}
         ref={ref}
       />
     </ScrollContext.Provider>

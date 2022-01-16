@@ -3,6 +3,14 @@
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   align-self: stretch;
+
+  &.off {
+    scroll-snap-type: unset;
+
+    .panel {
+      scroll-snap-align: unset;
+    }
+  }
 }
 
 .panel {
