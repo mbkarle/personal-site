@@ -2,7 +2,7 @@ export const SLIDES = [
   {
     location: "Pine Plains, NY",
     description:
-      "Hanging out with a friend's dog, clearly not feeling too guilty about betraying my own beloved pup. Sorry Jazz!",
+      "Hanging out with a friend's dog, clearly not feeling too guilty about betraying my own beloved pup. Sorry [Jazz](/jazz)!",
   },
   {
     location: "Dunster House, Cambridge, MA",

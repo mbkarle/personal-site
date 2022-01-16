@@ -1,6 +1,7 @@
 import * as styles from "./about.module.scss";
 
 import React, { useState } from "react";
+import { Link } from "gatsby";
 import mergeDefaults from "utils/merge-defaults";
 import { StaticImage } from "gatsby-plugin-image";
 import Slideshow from "components/basics/slideshow";
@@ -16,8 +17,12 @@ const About = (props) => {
       <div className={styles.slideshowContainer}>
         <div className={styles.slideLocation}>
           <LocationIcon height={18} width={18} />
-          {SLIDES[slideIdx]?.location}
-          <button className={styles.howToButton}>How’d I make this?</button>
+          <div className={styles.locationText}>
+            {SLIDES[slideIdx]?.location}
+          </div>
+          <Link className={styles.howToButton} to="/coming-soon">
+            How’d I make this?
+          </Link>
         </div>
         <Slideshow className={styles.slideshow} onChange={setSlideIdx}>
           <Slideshow.Slide>
@@ -83,7 +88,9 @@ const About = (props) => {
         <MD className={styles.descriptionP}>{ABOUT_ME}</MD>
         <div className={styles.originCta}>
           Want even{" "}
-          <button className={styles.originButton}>more origin story?</button>
+          <Link className={styles.originButton} to="/coming-soon">
+            more origin story?
+          </Link>
         </div>
       </div>
     </SnapScroller.Panel>

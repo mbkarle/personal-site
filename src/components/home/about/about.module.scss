@@ -24,7 +24,7 @@ $max-content-width: 650px;
   align-items: stretch;
   transition: height 0.2s;
   box-shadow: 6px 6px 8px 4px rgba(0, 0, 0, 0.25);
-  max-width: $max-content-width;
+  max-width: #{"min(#{$max-content-width}, #{calc(100vh - 300px)})"};
 
   &:hover {
     .how-to-button {
@@ -45,8 +45,10 @@ $slide-padding: 16px;
   display: flex;
   align-items: center;
 
-  svg {
-    margin-right: 8px;
+  .location-text {
+    margin-left: 8px;
+    max-width: calc(100% - 64px);
+    @include design-system.ellipsis;
   }
 }
 
@@ -68,7 +70,6 @@ $slide-padding: 16px;
   margin-left: auto;
   padding: 16px;
   box-sizing: border-box;
-  max-width: $max-content-width;
 }
 
 .description-header {
@@ -105,12 +106,12 @@ $slide-padding: 16px;
   @include design-system.remove-button-styles;
   position: absolute;
   right: $slide-padding;
-  top: $slide-padding;
   padding: 4px 8px;
   border-radius: 4px;
   border: solid 1px design-system.$gray200;
   cursor: pointer;
   transition: all 0.2s;
+  font-size: 14px;
   
   color: white;
   background: design-system.$blue600;
