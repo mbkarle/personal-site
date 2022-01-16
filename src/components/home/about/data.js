@@ -21,7 +21,7 @@ export const SLIDES = [
   {
     location: "JMT, Sierra Nevada, CA",
     description:
-      "Through-hiked the John Muir Trail with friends in August of 2021! Obviously it was entirely unbearable to be without React for so long 😤",
+      "Through-hiked the [John Muir Trail](/coming-soon) with friends in August of 2021! Obviously it was entirely unbearable to be without React for so long 😤",
   },
 ];
 
