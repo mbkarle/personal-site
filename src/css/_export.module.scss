@@ -1,0 +1,6 @@
+@use 'src/css/design-system';
+
+:export {
+  mobileBreakpoint: design-system.$mobile-break-num;
+  tabletBreakpoint: design-system.$tablet-break-num;
+}
