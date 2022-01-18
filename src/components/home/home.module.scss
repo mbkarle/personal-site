@@ -29,14 +29,14 @@
 
 .hero-header {
   color: white;
-  filter: drop-shadow(2px 4px 6px black);
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.8));
   @extend .h-1;
 }
 
 .hero-subheader {
   @extend .h-2;
   color: design-system.$gray900-dark;
-  filter: drop-shadow(2px 4px 6px black);
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.8));
 }
 
 .scroll-button {

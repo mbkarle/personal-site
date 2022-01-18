@@ -67,13 +67,16 @@
   }
 
   @include design-system.on-tablet {
-    @include cardify;
     flex-direction: column;
 
     .image-container {
       margin: 0 0 32px;
       width: 100%;
     }
+  }
+
+  @include design-system.on-touch-screen {
+    @include cardify;
   }
 
   &:hover {
