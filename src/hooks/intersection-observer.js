@@ -1,5 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 
+const isBrowser = typeof window !== "undefined";
+
 /**
  * Create a memoized IntersectionObserver instance
  * that observes a single element on the page
@@ -16,22 +18,22 @@ export const useIntersectionObserver = (
   // destructure relevant options to provide exhaustive deps to memo without passing referentially unstable options object
   const { threshold, root, rootMargin } = options;
   // use memo for referential stability but update when options change
-  const observer = useMemo(
-    () =>
-      new IntersectionObserver((entries) => onObservation?.(entries), {
+  const observer = useMemo(() => {
+    if (isBrowser && "IntersectionObserver" in window) {
+      return new IntersectionObserver((entries) => onObservation?.(entries), {
         threshold,
         root,
         rootMargin,
-      }),
-    [onObservation, threshold, root, rootMargin]
-  );
+      });
+    }
+  }, [onObservation, threshold, root, rootMargin]);
 
   useEffect(() => {
-    if (element) {
+    if (observer && element) {
       observer.observe(element);
     }
 
-    return () => observer.disconnect();
+    return () => observer?.disconnect();
   }, [observer, element]);
 };
 

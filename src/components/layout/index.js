@@ -1,3 +1,4 @@
+import "intersection-observer";
 import * as styles from "./layout.module.scss";
 import "css/typography.scss";
 
