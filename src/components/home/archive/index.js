@@ -3,30 +3,27 @@ import * as styles from "./archive.module.scss";
 import React, { useState } from "react";
 import { Link } from "gatsby";
 import SnapScroller from "components/basics/snap-scroller";
-import mergeDefaults from "utils/merge-defaults";
+import mergeDefaults, { mergeClassName } from "utils/merge-defaults";
 import MD from "components/basics/md";
 import { PROJECTS } from "./data";
-import { useOnScreenRatio } from "hooks/intersection-observer";
+import { useIsOnScreen } from "hooks/intersection-observer";
 import { useIsTabletSize } from "hooks/window-size";
-
-const MAX_PERCENT_STAGGER = 10;
 
 const Project = ({ title, description, Image, time, to, isRev, ...props }) => {
   const [element, setElement] = useState(null);
   const isNarrowScreen = useIsTabletSize();
-  const onScreenRatio = useOnScreenRatio({ element });
-  const stagger = isNarrowScreen
-    ? 0
-    : (isRev ? 1 : -1) * (1 - onScreenRatio) * MAX_PERCENT_STAGGER;
-  const style = { transform: `translateX(${stagger}%)` };
+  const isOnScreen = useIsOnScreen({ element, minimumIntersectionRatio: 0.4 });
 
   return (
-    <div ref={setElement}>
-      <Link
-        className={styles.row + (isRev ? ` ${styles.rev}` : "")}
-        to={to}
-        style={style}
-      >
+    <div
+      ref={setElement}
+      className={mergeClassName(
+        styles.project,
+        !(isNarrowScreen || isOnScreen) && styles.exit,
+        isRev && styles.rev
+      )}
+    >
+      <Link className={styles.row + (isRev ? ` ${styles.rev}` : "")} to={to}>
         <div className={styles.imageContainer}>
           <Image />
         </div>

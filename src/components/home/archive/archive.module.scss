@@ -1,6 +1,7 @@
 @use "css/design-system.scss";
 
 .archive {
+  overflow-x: hidden;
   background: design-system.$bg-dark;
   color: design-system.$gray800-dark;
   display: flex;
@@ -128,4 +129,18 @@
 
 .time {
   color: design-system.$gray500-dark;
+}
+
+.project {
+  transition: transform 1s;
+  transform: translateX(0);
+}
+
+.exit {
+  $stagger: 15%;
+  transform: translateX(-$stagger);
+
+  &.rev {
+    transform: translateX($stagger);
+  }
 }

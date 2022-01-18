@@ -29,4 +29,19 @@ body {
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
+
+  // propagate full height through gatsby containers
+  > div:first-child {
+    height: 100%;
+    > div:first-child {
+      height: 100%;
+      > main {
+        height: 100%;
+      }
+    }
+  }
+}
+
+html, body {
+  height: 100%;
 }
