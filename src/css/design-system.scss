@@ -58,6 +58,14 @@ $tablet-break: $tablet-break-num * 1px;
   }
 }
 
+@mixin on-touch-screen {
+  & {
+    @media (hover: none) {
+      @content;
+    }
+  }
+}
+
 // header styles
 .h-1,
 .h-2,

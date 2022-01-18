@@ -1,6 +1,6 @@
 import * as styles from "./about.module.scss";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import mergeDefaults from "utils/merge-defaults";
 import { StaticImage } from "gatsby-plugin-image";
@@ -9,6 +9,7 @@ import SnapScroller from "components/basics/snap-scroller";
 import LocationIcon from "images/location.icon.svg";
 import MD from "components/basics/md";
 import { SLIDES, ABOUT_ME } from "./data";
+import { useIsOnScreen } from "hooks/intersection-observer";
 
 const About = (props) => {
   const [slideIdx, setSlideIdx] = useState(0);
@@ -82,18 +83,39 @@ const About = (props) => {
           </MD>
         </div>
       </div>
-
-      <div className={styles.descriptionContainer}>
-        <div className={styles.descriptionHeader}>About Me</div>
-        <MD className={styles.descriptionP}>{ABOUT_ME}</MD>
-        <div className={styles.originCta}>
-          Want even{" "}
-          <Link className={styles.originButton} to="/coming-soon">
-            more origin story?
-          </Link>
-        </div>
-      </div>
+      <Blurb />
     </SnapScroller.Panel>
+  );
+};
+
+const Blurb = (props) => {
+  const [element, setElement] = useState(null);
+  const [wasVisible, setWasVisible] = useState(false);
+  const isOnScreen = useIsOnScreen({ element });
+  useEffect(() => {
+    if (isOnScreen) {
+      setWasVisible(true);
+    }
+  }, [isOnScreen]);
+
+  return (
+    <div className={styles.descriptionContainer} {...props}>
+      <div
+        className={
+          styles.descriptionHeader + (wasVisible ? ` ${styles.seen}` : "")
+        }
+        ref={setElement}
+      >
+        About Me
+      </div>
+      <MD className={styles.descriptionP}>{ABOUT_ME}</MD>
+      <div className={styles.originCta}>
+        Want even{" "}
+        <Link className={styles.originButton} to="/coming-soon">
+          more origin story?
+        </Link>
+      </div>
+    </div>
   );
 };
 

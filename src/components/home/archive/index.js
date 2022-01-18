@@ -1,11 +1,44 @@
 import * as styles from "./archive.module.scss";
 
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "gatsby";
 import SnapScroller from "components/basics/snap-scroller";
 import mergeDefaults from "utils/merge-defaults";
 import MD from "components/basics/md";
 import { PROJECTS } from "./data";
+import { useOnScreenRatio } from "hooks/intersection-observer";
+import { useIsTabletSize } from "hooks/window-size";
+
+const MAX_PERCENT_STAGGER = 10;
+
+const Project = ({ title, description, Image, time, to, isRev, ...props }) => {
+  const [element, setElement] = useState(null);
+  const isNarrowScreen = useIsTabletSize();
+  const onScreenRatio = useOnScreenRatio({ element });
+  const stagger = isNarrowScreen
+    ? 0
+    : (isRev ? 1 : -1) * (1 - onScreenRatio) * MAX_PERCENT_STAGGER;
+  const style = { transform: `translateX(${stagger}%)` };
+
+  return (
+    <div ref={setElement}>
+      <Link
+        className={styles.row + (isRev ? ` ${styles.rev}` : "")}
+        to={to}
+        style={style}
+      >
+        <div className={styles.imageContainer}>
+          <Image />
+        </div>
+        <div className={styles.textContainer}>
+          <div className={styles.title}>{title}</div>
+          <div className={styles.time}>{time}</div>
+          <MD className={styles.description}>{description}</MD>
+        </div>
+      </Link>
+    </div>
+  );
+};
 
 const Archive = (props) => (
   <SnapScroller.Panel
@@ -17,21 +50,12 @@ const Archive = (props) => (
       Here’s a little select work and project experiences from recent years that
       I’ve written a bit about.
     </div>
-    {PROJECTS.map(({ title, description, Image, time, to }, idx) => (
-      <Link
-        key={`${title}-${idx}`}
-        className={styles.row + (idx % 2 == 1 ? ` ${styles.rev}` : "")}
-        to={to}
-      >
-        <div className={styles.imageContainer}>
-          <Image />
-        </div>
-        <div className={styles.textContainer}>
-          <div className={styles.title}>{title}</div>
-          <div className={styles.time}>{time}</div>
-          <MD className={styles.description}>{description}</MD>
-        </div>
-      </Link>
+    {PROJECTS.map((project, idx) => (
+      <Project
+        key={`${project.title}-${idx}`}
+        isRev={idx % 2 == 1}
+        {...project}
+      />
     ))}
   </SnapScroller.Panel>
 );
