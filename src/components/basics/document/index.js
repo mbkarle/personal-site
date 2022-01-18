@@ -31,7 +31,9 @@ const Document = ({ children, ...props }) => (
       <Link className={styles.moreButton} to="/#archive">
         More Projects
       </Link>
-      <MD>{`By [Matt Karle](/#contact), 2022`}</MD>
+      <MD
+        className={styles.attribution}
+      >{`By [Matt Karle](/#contact), 2022`}</MD>
     </div>
   </Layout>
 );

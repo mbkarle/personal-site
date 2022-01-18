@@ -44,6 +44,12 @@
   border-top: solid 1px design-system.$gray150;
   background: white;
   align-self: stretch;
+
+  .attribution {
+    @include design-system.on-mobile {
+      display: none;
+    }
+  }
 }
 
 .home-button, .more-button {

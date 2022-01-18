@@ -21,6 +21,10 @@
   .hero-subheader {
     margin-top: 16px;
   }
+
+  @include design-system.on-mobile {
+    margin: 0;
+  }
 }
 
 .hero-header {

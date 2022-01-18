@@ -9,6 +9,20 @@
   flex-direction: row;
   min-height: 100vh;
   height: unset;
+
+  @include design-system.on-tablet {
+    flex-direction: column-reverse;
+
+    .slideshow-container {
+      margin: 24px 0;
+      width: 100%;
+    }
+
+    .description-container {
+      margin-left: 0;
+      padding: 16px 0;
+    }
+  }
 }
 
 $max-content-width: 650px;
@@ -37,7 +51,7 @@ $slide-padding: 16px;
 
 .slide-location {
   position: relative;
-  padding: $slide-padding; 
+  padding: $slide-padding;
   @extend .gen-header;
   font-size: 18px;
   color: design-system.$gray800;
@@ -72,6 +86,9 @@ $slide-padding: 16px;
   box-sizing: border-box;
 }
 
+// estimated original width of about me header
+$starting-width: 340px;
+
 .description-header {
   @extend .h-1;
   color: design-system.$gray800-dark;
@@ -79,15 +96,25 @@ $slide-padding: 16px;
   background: design-system.$bg-dark;
   border-radius: 8px;
   padding: 16px;
-
-  animation: widen 4s ease-out;
-  min-width: 100%;
   box-sizing: border-box;
+  min-width: 100%;
+
+  @media (min-width: design-system.$mobile-break) {
+    min-width: $starting-width;
+    &.seen {
+      animation: widen 2s ease-out;
+      min-width: 100%;
+    }
+  }
 }
 
 @keyframes widen {
-  0% { min-width: 0 }
-  100% { min-width: 100% }
+  0% {
+    min-width: $starting-width;
+  }
+  100% {
+    min-width: 100%;
+  }
 }
 
 .description-p {
@@ -112,7 +139,7 @@ $slide-padding: 16px;
   cursor: pointer;
   transition: all 0.2s;
   font-size: 14px;
-  
+
   color: white;
   background: design-system.$blue600;
   @include design-system.hidden;
