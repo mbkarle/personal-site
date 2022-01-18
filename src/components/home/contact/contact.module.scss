@@ -3,18 +3,185 @@
 .container {
   display: flex;
   flex-direction: column;
+  background: design-system.$gray25;
 
-  padding: 32px #{"min(8vw, 150px)"};
-  box-sizing: border-box;
-
-  .header {
-    margin-bottom: 32px;
+  .subheader {
+    margin: 24px 0 16px;
   }
+}
+
+$horiz-padding: #{"min(8vw, 150px)"};
+
+.content {
+  padding: 32px $horiz-padding;
+  box-sizing: border-box;
 }
 
 .header {
   @extend .gen-header;
   font-size: 48px;
   font-weight: bold;
-  padding: 8px;
+
+  @include design-system.on-mobile {
+    font-size: 32px;
+  }
+}
+
+.subheader {
+  @extend .h-3;
+  color: design-system.$gray600;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .button {
+    margin: 32px;
+  }
+}
+
+.button {
+  @include design-system.remove-button-styles;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    @include design-system.lighten;
+  }
+
+  @include design-system.on-mobile {
+    font-size: 14px;
+  }
+}
+
+.email-button {
+  background: design-system.$bg-dark;
+  color: design-system.$gray800-dark;
+  align-self: flex-start;
+  margin-bottom: 32px;
+
+  div {
+    min-width: 126px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      margin-right: 8px;
+      path {
+        fill: design-system.$gray800-dark;
+      }
+    }
+  }
+}
+
+.resume-button {
+  background: white;
+  color: design-system.$gray800;
+  border: solid 1px design-system.$gray150;
+}
+
+.linked-in-button {
+  background: design-system.$blue600;
+  color: white;
+}
+
+.separator {
+  border-top: solid 1px design-system.$gray150;
+  width: 100%;
+}
+
+.campus-container {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+
+  @include design-system.on-tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.activity {
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  border: solid 1px design-system.$gray150;
+  box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.1);
+  color: design-system.$gray800;
+  font-size: 18px;
+
+  display: flex;
+  align-items: center;
+}
+
+.activity-text {
+  display: flex;
+  flex-direction: column;
+
+  .activity-header {
+    margin-bottom: 4px;
+  }
+}
+
+.activity-header {
+  @extend .gen-header;
+  font-weight: bold;
+}
+
+.activity-description {
+  font-size: 14px;
+  color: design-system.$gray600;
+}
+
+.activity-icon {
+  max-width: 48px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-right: 12px;
+
+  @include design-system.on-mobile {
+    display: none;
+  }
+}
+
+.footer {
+  display: flex;
+  padding: 16px $horiz-padding;
+  border-top: solid 1px design-system.$gray150;
+  background: white;
+  align-self: stretch;
+  margin-top: auto;
+  justify-content: space-between;
+}
+
+.attribution {
+  font-size: 12px;
+  color: design-system.$gray600;
+}
+
+.foot-header {
+  font-size: 14px;
+  @extend .gen-header;
+  font-weight: bold;
+  color: design-system.$gray800;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 8px;
+  row-gap: 4px;
+  font-size: 12px;
+  color: design-system.$gray600;
+
+  .merge {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
 }
