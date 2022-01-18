@@ -7,6 +7,7 @@ import useTextPlayback from "hooks/text-playback";
 import SnapScroller from "components/basics/snap-scroller";
 import About from "./about";
 import Archive from "./archive";
+import Contact from "./contact";
 
 const Home = (props) => {
   return (
@@ -18,6 +19,7 @@ const Home = (props) => {
       <Hero />
       <About />
       <Archive />
+      <Contact />
     </SnapScroller>
   );
 };

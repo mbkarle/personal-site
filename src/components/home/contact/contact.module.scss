@@ -1,0 +1,20 @@
+@use "css/design-system.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  padding: 32px #{"min(8vw, 150px)"};
+  box-sizing: border-box;
+
+  .header {
+    margin-bottom: 32px;
+  }
+}
+
+.header {
+  @extend .gen-header;
+  font-size: 48px;
+  font-weight: bold;
+  padding: 8px;
+}
