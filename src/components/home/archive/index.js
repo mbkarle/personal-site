@@ -7,11 +7,9 @@ import mergeDefaults, { mergeClassName } from "utils/merge-defaults";
 import MD from "components/basics/md";
 import { PROJECTS } from "./data";
 import { useIsOnScreen } from "hooks/intersection-observer";
-import { useIsTabletSize } from "hooks/window-size";
 
 const Project = ({ title, description, Image, time, to, isRev, ...props }) => {
   const [element, setElement] = useState(null);
-  const isNarrowScreen = useIsTabletSize();
   const isOnScreen = useIsOnScreen({ element, minimumIntersectionRatio: 0.4 });
 
   return (
@@ -19,7 +17,7 @@ const Project = ({ title, description, Image, time, to, isRev, ...props }) => {
       ref={setElement}
       className={mergeClassName(
         styles.project,
-        !(isNarrowScreen || isOnScreen) && styles.exit,
+        !isOnScreen && styles.exit,
         isRev && styles.rev
       )}
     >

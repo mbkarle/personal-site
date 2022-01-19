@@ -138,9 +138,11 @@
 
 .exit {
   $stagger: 15%;
-  transform: translateX(-$stagger);
+  @media (min-width: design-system.$tablet-break) {
+    transform: translateX(-$stagger);
 
-  &.rev {
-    transform: translateX($stagger);
+    &.rev {
+      transform: translateX($stagger);
+    }
   }
 }
