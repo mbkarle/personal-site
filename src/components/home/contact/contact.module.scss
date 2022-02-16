@@ -44,6 +44,7 @@ $horiz-padding: #{"min(8vw, 150px)"};
 
 .button {
   @include design-system.remove-button-styles;
+  position: relative;
   padding: 12px 18px;
   border-radius: 12px;
   font-size: 18px;
