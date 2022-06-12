@@ -29,6 +29,10 @@
   position: absolute;
   top: 0;
   left: 0;
+
+  @include design-system.on-touch-screen {
+    overflow: scroll;
+  }
 }
 
 .slide {

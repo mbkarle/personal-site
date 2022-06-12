@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import mergeDefaults from "utils/merge-defaults";
 import ScrollIcon from "images/scroll-down.icon.svg";
 import useScrollContainer from "hooks/scroll-container";
+import { useIsMobileSize } from "hooks/window-size";
 import { isArray } from "utils/type";
 
 const Slideshow = ({ children, onChange, ...props }) => {
@@ -11,14 +12,40 @@ const Slideshow = ({ children, onChange, ...props }) => {
   const hasMult = isArray(children) && children.length;
   const [scrollContainer, ref, scroll] = useScrollContainer();
   const scrollDistance = scrollContainer?.offsetWidth;
+
+  useEffect(() => {
+    if (scrollContainer) {
+      const updateIdx = (currScroll) => {
+        const idx = Math.floor(
+          (currScroll + scrollDistance / 3) / scrollDistance
+        );
+        if (idx != activeIdx) {
+          setActiveIdx(idx);
+          onChange?.(idx);
+        }
+      };
+
+      // set index on initial render
+      updateIdx(scrollContainer.scrollLeft);
+
+      // function to handle index updates on scroll
+      const onScroll = ({ target }) => {
+        updateIdx(target?.scrollLeft);
+      };
+
+      // add scroll handler to scrollContainer
+      scrollContainer.addEventListener("scroll", onScroll);
+      return () => scrollContainer.removeEventListener("scroll", onScroll);
+    }
+  }, [scrollContainer, scrollDistance, activeIdx, onChange]);
+
+  // fix over scrolling bug on mobile
+  const scrollDiscount = useIsMobileSize() ? 0.99 : 1;
+
   const getScroll = (isRight) => () => {
     const coeff = isRight ? 1 : -1;
-    scroll({ left: coeff * scrollDistance, behavior: "smooth" });
-    setActiveIdx((current) => {
-      const nextIdx = current + coeff;
-      onChange?.(nextIdx);
-      return nextIdx;
-    });
+    const distance = coeff * scrollDistance * scrollDiscount;
+    scroll({ left: distance, behavior: "smooth" });
   };
   const scrollLeft = getScroll(false);
   const scrollRight = getScroll(true);

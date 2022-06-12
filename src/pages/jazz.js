@@ -18,6 +18,7 @@ const Jazz = (props) => {
             width: "min(500px, 95vw)",
             borderRadius: "8px",
             overflow: "hidden",
+            transform: "translateZ(0)",
           }}
         >
           <Slideshow>
