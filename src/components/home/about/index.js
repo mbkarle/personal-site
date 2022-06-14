@@ -12,77 +12,9 @@ import { SLIDES, ABOUT_ME } from "./data";
 import { useIsOnScreen } from "hooks/intersection-observer";
 
 const About = (props) => {
-  const [slideIdx, setSlideIdx] = useState(0);
   return (
     <SnapScroller.Panel {...mergeDefaults({ className: styles.about }, props)}>
-      <div className={styles.slideshowContainer}>
-        <div className={styles.slideLocation}>
-          <LocationIcon height={18} width={18} />
-          <div className={styles.locationText}>
-            {SLIDES[slideIdx]?.location}
-          </div>
-          <Link className={styles.howToButton} to="/coming-soon">
-            How’d I make this?
-          </Link>
-        </div>
-        <Slideshow className={styles.slideshow} onChange={setSlideIdx}>
-          <Slideshow.Slide>
-            <StaticImage
-              src="../../../images/tuck.png"
-              alt="Matt with a friend's dog, betraying his own beloved beagle Jazz!"
-              layout="fullWidth"
-              placeholder="blurred"
-            />
-          </Slideshow.Slide>
-          <Slideshow.Slide>
-            <StaticImage
-              src="../../../images/formal.png"
-              alt="All business with the roommates"
-              layout="fullWidth"
-              placeholder="blurred"
-            />
-          </Slideshow.Slide>
-          <Slideshow.Slide>
-            <StaticImage
-              src="../../../images/working.png"
-              alt="Working hard with the cats."
-              layout="fullWidth"
-              placeholder="blurred"
-            />
-          </Slideshow.Slide>
-          <Slideshow.Slide>
-            <StaticImage
-              src="../../../images/jam.png"
-              alt="Playing music with my brother"
-              layout="fullWidth"
-              placeholder="blurred"
-            />
-          </Slideshow.Slide>
-          <Slideshow.Slide>
-            <StaticImage
-              src="../../../images/jmt-wide.png"
-              alt="Through hiking the John Muir Trail in the Sierra."
-              layout="fullWidth"
-              placeholder="blurred"
-            />
-          </Slideshow.Slide>
-        </Slideshow>
-        <div className={styles.slideBody}>
-          {SLIDES.length && (
-            <div className={styles.indicatorContainer}>
-              {SLIDES.map((slide, idx) => (
-                <Slideshow.Indicator
-                  key={`${slide.location}-${idx}`}
-                  isActive={idx === slideIdx}
-                />
-              ))}
-            </div>
-          )}
-          <MD className={styles.slideDescription}>
-            {SLIDES[slideIdx]?.description}
-          </MD>
-        </div>
-      </div>
+      <AboutSlides />
       <Blurb />
     </SnapScroller.Panel>
   );
@@ -114,6 +46,78 @@ const Blurb = (props) => {
         <Link className={styles.originButton} to="/coming-soon">
           more origin story?
         </Link>
+      </div>
+    </div>
+  );
+};
+
+const AboutSlides = (props) => {
+  const [slideIdx, setSlideIdx] = useState(0);
+  return (
+    <div className={styles.slideshowContainer} {...props}>
+      <div className={styles.slideLocation}>
+        <LocationIcon height={18} width={18} />
+        <div className={styles.locationText}>{SLIDES[slideIdx]?.location}</div>
+        <Link className={styles.howToButton} to="/coming-soon">
+          How’d I make this?
+        </Link>
+      </div>
+      <Slideshow className={styles.slideshow} onChange={setSlideIdx}>
+        <Slideshow.Slide>
+          <StaticImage
+            src="../../../images/tuck.png"
+            alt="Matt with a friend's dog, betraying his own beloved beagle Jazz!"
+            layout="fullWidth"
+            placeholder="blurred"
+          />
+        </Slideshow.Slide>
+        <Slideshow.Slide>
+          <StaticImage
+            src="../../../images/formal.png"
+            alt="All business with the roommates"
+            layout="fullWidth"
+            placeholder="blurred"
+          />
+        </Slideshow.Slide>
+        <Slideshow.Slide>
+          <StaticImage
+            src="../../../images/working.png"
+            alt="Working hard with the cats."
+            layout="fullWidth"
+            placeholder="blurred"
+          />
+        </Slideshow.Slide>
+        <Slideshow.Slide>
+          <StaticImage
+            src="../../../images/jam.png"
+            alt="Playing music with my brother"
+            layout="fullWidth"
+            placeholder="blurred"
+          />
+        </Slideshow.Slide>
+        <Slideshow.Slide>
+          <StaticImage
+            src="../../../images/jmt-wide.png"
+            alt="Through hiking the John Muir Trail in the Sierra."
+            layout="fullWidth"
+            placeholder="blurred"
+          />
+        </Slideshow.Slide>
+      </Slideshow>
+      <div className={styles.slideBody}>
+        {SLIDES.length && (
+          <div className={styles.indicatorContainer}>
+            {SLIDES.map((slide, idx) => (
+              <Slideshow.Indicator
+                key={`${slide.location}-${idx}`}
+                isActive={idx === slideIdx}
+              />
+            ))}
+          </div>
+        )}
+        <MD className={styles.slideDescription}>
+          {SLIDES[slideIdx]?.description}
+        </MD>
       </div>
     </div>
   );

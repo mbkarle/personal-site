@@ -148,6 +148,10 @@ $starting-width: 340px;
   &:hover {
     background: rgba(105, 150, 255);
   }
+
+  @include design-system.on-touch-screen {
+    display: none;
+  }
 }
 
 .origin-cta {
