@@ -15,7 +15,7 @@ const Jazz = (props) => {
       <Document.Center>
         <div
           style={{
-            maxWidth: "calc(100vw - var(--page-margin) * 2",
+            maxWidth: "calc(100vw - var(--page-margin) * 2)",
             width: "min(500px, 95vw)",
             borderRadius: "8px",
             overflow: "hidden",
