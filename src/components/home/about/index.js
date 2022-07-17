@@ -58,7 +58,7 @@ const AboutSlides = (props) => {
       <div className={styles.slideLocation}>
         <LocationIcon height={18} width={18} />
         <div className={styles.locationText}>{SLIDES[slideIdx]?.location}</div>
-        <Link className={styles.howToButton} to="/coming-soon">
+        <Link className={styles.howToButton} to="/how-to-slideshow">
           How’d I make this?
         </Link>
       </div>

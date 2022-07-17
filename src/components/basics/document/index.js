@@ -8,15 +8,28 @@ import Layout from "components/layout";
 import MD from "components/basics/md";
 import { StaticImage } from "gatsby-plugin-image";
 
-const getBasicComponent = (className) => {
-  const Component = (props) => (
-    <div
-      {...mergeDefaults(
-        { className: styles[className] + ` ${styles.basic}` },
-        props
-      )}
-    />
-  );
+const getBasicComponent = (className, Base) => {
+  const Component = ({
+    top = 0,
+    right = 0,
+    bottom = 0,
+    left = 0,
+    ...props
+  }) => {
+    const finalProps = mergeDefaults(
+      {
+        className: styles[className] + ` ${styles.basic}`,
+        style: {
+          marginTop: top,
+          marginRight: right,
+          marginBottom: bottom,
+          marginLeft: left,
+        },
+      },
+      props
+    );
+    return Base ? <Base {...finalProps} /> : <div {...finalProps} />;
+  };
   Component.displayName = capitalize(className);
   return Component;
 };
@@ -38,11 +51,13 @@ const Document = ({ children, ...props }) => (
   </Layout>
 );
 
-const SUBCOMPONENTS = ["header", "body", "center", "banner", "separator"];
+const SUBCOMPONENTS = ["header", "body", "center", "banner", "separator", "br"];
 
 SUBCOMPONENTS.forEach((name) => {
   Document[capitalize(name)] = getBasicComponent(name);
 });
+
+Document.MD = getBasicComponent("md", MD);
 
 const WIP = (props) => (
   <div {...mergeDefaults({ className: styles.wip }, props)}>
