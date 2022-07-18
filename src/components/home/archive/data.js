@@ -18,7 +18,7 @@ export const PROJECTS = [
   {
     title: "Project Jeff",
     time: "Sep. 2021 - Nov. 2021",
-    to: "/coming-soon",
+    to: "/project-jeff",
     description: `My designer at Monthly and good friend Jeff hired me as a solo contractor to implement his portfolio site. Though reasonable in scope as a static site, there were plenty of challenges to overcome between rich interactions, responsive design, and integrating with a CMS to alleviate the technical burden of future updates. More of my thoughts here.`,
     Image: () => (
       <StaticImage
