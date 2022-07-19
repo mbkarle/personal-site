@@ -38,7 +38,7 @@ export const ACTIVITIES = [
   },
   {
     title: "FOP",
-    description: `The first-year outdoor program is an amazing orientation for incoming freshmen, and fittingly has one of the most wonderful communities on campus`,
+    description: `The first-year outdoor program is an amazing orientation for incoming freshmen, and fittingly has one of the most wonderful communities on campus.`,
     Icon: () => <StaticImage src="../../../images/fop.png" alt="FOP logo" />,
   },
 
