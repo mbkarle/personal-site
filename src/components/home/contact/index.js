@@ -132,7 +132,7 @@ const Footer = (props) => (
       </MD>
       <MD>{`[GitHub](https://github.com/mbkarle)`}</MD>
       <MD>{`[LinkedIn](https://www.linkedin.com/in/matthew-karle-631556155/)`}</MD>
-      <MD>{`[Resume](https://drive.google.com/file/d/113znPOLhmG5_4Df7iXb2RwjF6a0q23uZ/view?usp=sharing)`}</MD>
+      <MD>{`[Resume](https://drive.google.com/file/d/1GwH-7WsPuWouclrWNsAxXJ0CER0Av5VU/view?usp=sharing)`}</MD>
       <MD
         className={styles.merge}
       >{`Icons by [Freepik](https://www.flaticon.com/free-icons/cone)`}</MD>
