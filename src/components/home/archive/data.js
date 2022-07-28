@@ -30,7 +30,7 @@ export const PROJECTS = [
   {
     title: "Schoolwork",
     time: "Sep. 2019 - Present",
-    to: "/coming-soon",
+    to: "/schoolwork",
     description: `I love my classes at school! Most of what I’ve done so far has tended to be more theoretical (which is fine by me, I like a mix!), but once in a while things get a bit more applied. Ranging from mobile apps to neural architecture search research, here are some fun projects I had a hand in during my studies so far.`,
     Image: () => (
       <StaticImage

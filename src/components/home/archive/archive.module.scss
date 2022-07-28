@@ -86,7 +86,7 @@
   }
 
   &.rev {
-    @media (min-width: design-system.$tablet-break) {
+    @media (min-width: ((design-system.$tablet-break-num + 1) * 1px)) {
       flex-direction: row-reverse;
       .image-container {
         margin-right: 0;

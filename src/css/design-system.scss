@@ -167,6 +167,16 @@ $tablet-break: $tablet-break-num * 1px;
   text-overflow: ellipsis;
 }
 
+@mixin md-spacing {
+  :global(.md-h2) {
+    margin: 8px 0;
+  }
+
+  :global(.md-p) {
+    margin-bottom: 8px;
+  }
+}
+
 $z-bg: 1;
 $z-mg: 2;
 $z-fg: 3;

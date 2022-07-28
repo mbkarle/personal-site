@@ -7,6 +7,7 @@ import { capitalize } from "utils/str";
 import Layout from "components/layout";
 import MD from "components/basics/md";
 import { StaticImage } from "gatsby-plugin-image";
+import Youtube from "react-youtube";
 
 const getBasicComponent = (className, Base) => {
   const Component = ({
@@ -72,5 +73,21 @@ const WIP = (props) => (
 );
 
 Document.WIP = WIP;
+
+const ResponsiveYoutube = (props) => (
+  <div className={styles.youtubeParent}>
+    <Youtube
+      {...mergeDefaults(
+        {
+          iframeClassName: styles.youtubeFrame,
+          className: styles.youtubeContainer,
+        },
+        props
+      )}
+    />
+  </div>
+);
+
+Document.Youtube = ResponsiveYoutube;
 
 export default Document;
