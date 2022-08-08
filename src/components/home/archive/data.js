@@ -5,7 +5,7 @@ export const PROJECTS = [
   {
     title: "Monthly",
     time: "Sep. 2020 - Aug. 2021",
-    to: "/coming-soon",
+    to: "/monthly",
     description:
       "I took a year off from school in 2020 to work full time at Monthly. In my time there I grew so much as an engineer and got to work on loads of cool projects. Read about it here!",
     Image: () => (

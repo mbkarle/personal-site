@@ -52,7 +52,15 @@ const Document = ({ children, ...props }) => (
   </Layout>
 );
 
-const SUBCOMPONENTS = ["header", "body", "center", "banner", "separator", "br"];
+const SUBCOMPONENTS = [
+  "header",
+  "body",
+  "center",
+  "banner",
+  "separator",
+  "br",
+  "info",
+];
 
 SUBCOMPONENTS.forEach((name) => {
   Document[capitalize(name)] = getBasicComponent(name);
@@ -89,5 +97,14 @@ const ResponsiveYoutube = (props) => (
 );
 
 Document.Youtube = ResponsiveYoutube;
+
+export const QuickInfo = getBasicComponent("info");
+
+const INFO_SUBS = ["header", "separator", "row", "col"];
+
+INFO_SUBS.forEach((name) => {
+  const capName = capitalize(name);
+  QuickInfo[capName] = getBasicComponent(`info${capName}`);
+});
 
 export default Document;
